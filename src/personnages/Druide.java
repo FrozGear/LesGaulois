@@ -9,6 +9,8 @@ public class Druide {
 		this.nom = nom;
 		this.effetPotionsMin = effetPotionsMin;
 		this.effetPotionsMax = effetPotionsMax;
+		parler("Bonjour, je suis le druide ", + nom + " et ma potion leut aller d'une force " + effetPotionsMin + " à " + effetPotionsMax + "." );
+		
 	}
 
 	public String getNom() {
