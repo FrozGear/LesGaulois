@@ -30,6 +30,9 @@ public class Village {
 	
 	public void AfficherVillageois() {
 		System.out.println("Dans le village du chef " + this.chef.getNom() + " vivent les légendaires gaulois :");
+		for (int i=0; i<nbVillageois;i++) {
+			   System.out.println("- " + trouverHabitant(i).getNom());
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -47,6 +50,7 @@ public class Village {
 		//System.out.println(gaulois);
 		// Il y a une erreur car il n'y a encore personne dans le village.
 		village.setChef(chef);
+		village.ajouterHabitant(villageois);
 		village.AfficherVillageois();
 		
 	}
