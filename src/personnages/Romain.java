@@ -32,4 +32,9 @@ public class Romain {
 		}
 		
 	}
+	public static void main(String[] args) {
+		Romain coronavirus = new Romain("Coronavirus", 2);
+		System.out.println(coronavirus);
+		
+	}
 }
