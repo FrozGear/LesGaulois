@@ -45,6 +45,7 @@ public class Village {
 		
 		Chef chef = new Chef("Abraracourcix", 6,  village);
 		Gaulois villageois = new Gaulois("Asterix", 8);
+		Gaulois villageois = new Gaulois("Obelix", 25);
 		
 		//Gaulois gaulois = village.trouverHabitant(1);
 		//System.out.println(gaulois);
