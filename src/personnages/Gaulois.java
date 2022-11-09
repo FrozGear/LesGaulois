@@ -1,13 +1,18 @@
 package personnages;
 
 public class Gaulois {
-	private String nom;
-	private int force;
-	private int effetPotion = 1;
-
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
+	}
+
+	private String nom;
+	private int force, nb_trophees;;
+	private int effetPotion = 1;
+	private Equipement[] trophees = new Equipement[100];
+
+	public int getForce() {
+		return force;
 	}
 
 	public String getNom() {
@@ -15,33 +20,51 @@ public class Gaulois {
 	}
 
 	public void parler(String texte) {
-		System.out.println(prendreparole() + "<<" + texte + ">>");
+		System.out.println(prendreParole() + "Â«" + texte + "Â»");
+	}
 
+//	private String prendreParole() {
+//		return "Le gaulois" + nom + ":";
+//	}
+
+	private String prendreParole() {
+		String texte = "Le gaulois " + nom + " : ";
+		return texte;
 	}
-	
-	private String prendreparole() {
-		// TODO Auto-generated method stub
-		return "Le gaulois " + nom + " : ";
-	}
+
+//	public void frapper(Romain romain) {
+//		System.out.println(nom + " envoie un grand coup dans la mÃ¢choire de " + romain.getNom());
+//		romain.recevoirCoup((force / 3) * effetPotion);
+//	}
 
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		romain.recevoirCoup(force / 3);
+		System.out.println(nom + " envoie un grand coup dans la mÃ¢choire de " + romain.getNom());
+		Equipement[] trophees = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; trophees != null && i < trophees.length; i++, nb_trophees++) {
+			this.trophees[nb_trophees] = trophees[i];
+		}
 	}
 
+	public void boirePotion(int effetPotion) {
+		this.effetPotion = effetPotion;
+		System.out.println("Merci Druide, je sens que ma force est " + effetPotion + " fois dÃ©cuplÃ©e");
+	}
+
+	@Override
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
 	}
 
-	public void boirePotion(int forcePotion) {
-		System.out.println("Merci Druide, je sens que ma force est " + forcePotion + " fois décuplée. »");
-	}
-	
 	public static void main(String[] args) {
-		Gaulois asterix = new Gaulois("Asterix", 8);
+		Gaulois asterix = new Gaulois("asterix", 8);
 		System.out.println(asterix);
-		asterix.parler("salut, c'est fanta");
-		asterix.boirePotion(4);
+		Romain romain = new Romain("romain", -1);
+		asterix.prendreParole();
+		asterix.parler("wesh la mifa");
+		romain.parler("aie un gaugau");
+		asterix.frapper(romain);
+		asterix.toString();
+		asterix.boirePotion(6);
 	}
-	
+
 }
